@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div ng-app="app" ng-controller="app">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <!--<li><a href="#">Mentorite</a></li>-->
+                <li ng-if="loggedIn == 1" class="dropdown">
+                  <button role="button" aria-haspopup="true" ng-click="logout()" aria-expanded="false">Logout </button>
+                </li>
+                <li ng-if="loggedIn == 1" class="dropdown">
+                  <button role="button" aria-haspopup="true" aria-expanded="false">Welcome {{name}} </button>
+                </li>
+
+                <li ng-if="loggedIn != 1" class="dropdown">
+
+                  <button ng-if ="logginActive != 1" role="button"  ng-click="toggleform(2)" aria-haspopup="true" aria-expanded="false">Login </button>
+                  <button ng-if ="logginActive == 1" role="button" ng-click="toggleform(1)" aria-haspopup="true" aria-expanded="false">SignUp </button>
+                </li>
+
+              </ul>
+            </div>
+        </div>
+      </nav>
+
+      <div ng-if="loggedIn == 1" class="container-fluid"  >
+
+        <div class="table-responsive" >
+        </br>
+        </br>
+        </br>
+        </br>
+          <table id="sessionTable" class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Name</th>
+                <th>User Name</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="data  in results.users">
+              <tr >
+                <td>
+                  <span class="status0" ng-if="data.status==0" >{{ data.status }}</span>
+                  <span class="status1"  ng-if="data.status==1" >{{ data.status }}</span>
+                  <span  class="status2" ng-if="data.status==2" >{{ data.status }}</span>
+                </td>
+                <td>
+                    <p>{{ data.name }}</p>
+                </td>
+                <td>
+                  <p>{{ data.username }}</p>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-center">
+            <button  class="btn btn-outline-primary" ng-click="prevPage()">Previous</button>
+            <button class="btn btn-outline-success"  ng-click="nextPage()">Next</button>
+          </p>
+        </div>
+        <div ng-if="logginActive == 1" class="container-fluid"  >
+          <div class="row">
+          </br>
+          </br>
+          </br>
+          </br>
+            <div  class="row">
+              <div class="col-md-6">
+                username:<input class="form-control" type="text" id="loginusername" required/>
+              </div>
+            </div>
+            <div  class="row">
+              <div class="col-md-6">
+                pass:<input class="form-control" type="password" id="loginpass" required/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"><br>
+                <button ng-click="login()" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="signupActive == 1" class="container-fluid"  >
+          <div class="row">
+          </br>
+          </br>
+          </br>
+          </br>
+            <div  class="row">
+              <div class="col-md-6">
+                Username:<input class="form-control" type="text" id="usernamesignup" required/>
+              </div>
+            </div>
+            <div  class="row">
+              <div class="col-md-6">
+                pass:<input class="form-control" type="password" id="passsignup" required/>
+              </div>
+            </div>
+            <div  class="row">
+              <div class="col-md-6">
+                name:<input class="form-control" type="text" id="namesignup" required/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"><br>
+                <button ng-click="signup()" class="btn btn-primary">signup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Uncommnet for Development Build. -->
+      <!-- <script src='https://unpkg.com/vue'></script> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+      <script type="text/javascript" src="assets/js/libraries/asyncall.js"></script>
+      <script type="text/javascript" src="assets/js/angular/app.js"></script>
+    </body>
+  </html>
