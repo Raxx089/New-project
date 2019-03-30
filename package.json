@@ -1,0 +1,22 @@
+{
+  "name": "mentorite-backend",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "mime": "^2.2.0",
+    "multer": "^1.3.0",
+    "mysql": "2.16.0",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
